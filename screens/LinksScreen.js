@@ -6,7 +6,7 @@ import { Button, Tile, Card, ListItem, Icon, Divider, Switch, Text, Tooltip } fr
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Service',
+    title: 'Users',
   };
 
 
