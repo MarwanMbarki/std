@@ -50,7 +50,7 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container}>
         <View>
         <SearchBar
-          placeholder="Type Here..."
+          placeholder="Search..."
           onChangeText={this.updateSearch}
           value={search}
         />
