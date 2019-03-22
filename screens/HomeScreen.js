@@ -11,7 +11,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
-import { Button, Tile, Card  } from 'react-native-elements';
+import { Button, Tile, Card, Header, Text, Icon, SearchBar  } from 'react-native-elements';
+
 
 
 
@@ -20,17 +21,49 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
   render() {
+    const { search } = this.state;
+
     return (
       <View style={styles.container}>
+      <View>
+        <Header
+          leftComponent={{ icon: 'menu', color: '#fff' }}
+          centerComponent={{ text: 'AuToBus', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+          containerStyle={{
+            backgroundColor: '#000000',
+            justifyContent: 'space-around',
+          }}
+        />
+
+      </View>
+
         <ScrollView style={styles.container}>
-            <View style={styles.container}>
-            <Tile
-              imageSrc={require('../assets/images/digital-marketing.jpg')}
-              title="BRANDING"
-              featured
-              caption="Some Caption Text"
-              />
+        <View>
+        <SearchBar
+          placeholder="Type Here..."
+          onChangeText={this.updateSearch}
+          value={search}
+        />
+        </View>
+            <View>
+              <Tile
+                imageSrc={require('../assets/images/digital-marketing.jpg')}
+                title="BRANDING"
+                featured
+                caption= {<Text style={{color: '#ffffff'}}>Short test description to go here</Text>}
+                >
+
+                </Tile>
 
             </View>
 
@@ -60,17 +93,6 @@ export default class HomeScreen extends React.Component {
     );
   }
 
-
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
